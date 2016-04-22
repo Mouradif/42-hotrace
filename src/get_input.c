@@ -1,4 +1,5 @@
 #include "hotrace.h"
+#include "libft.h"
 #include <stdio.h>
 
 char			*read_input(char *full_line)
@@ -23,28 +24,4 @@ char			*read_input(char *full_line)
 	}
 	free(tmp_line);
 	return (full_line);
-}
-
-
-int main(void)
-{
-	char *database[10000];
-	char *full_line;
-	int	i;
-
-	i = 0;
-	full_line = (char*)malloc(sizeof(char) * 1);
-	while(full_line != NULL)
-	{
-		full_line = (char*)malloc(sizeof(char) * 1);
-		full_line[0] = '\0';
-		full_line = read_input(full_line);
-		database[i] = full_line;
-		i++;
-	}
-	i--;
-	while (--i >= 0)
-		printf("Line : %s", database[i]);
-	free(full_line);
-	return 0;
 }

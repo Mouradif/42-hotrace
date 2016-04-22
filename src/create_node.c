@@ -6,12 +6,13 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 22:41:07 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/22 23:04:20 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/23 00:30:29 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "hotrace.h"
+#include "libft.h"
 
 t_node	*init_node(char *key, char *value)
 {
@@ -30,8 +31,8 @@ void	insert_node(t_node *node, t_node **root)
 	int		cmp;
 	t_node	**next;
 	
-	cmp = ft_strlen(node->key) - ft_strlen(tmp->key);
-	cmp = (cmp == 0) ? ft_strcmp(node->key, tmp->key) : cmp;
+	cmp = ft_strlen(node->key) - ft_strlen((*root)->key);
+	cmp = (cmp == 0) ? ft_strcmp(node->key, (*root)->key) : cmp;
 	next = (cmp < 0) ? &((*root)->left) : &((*root)->right);
 	if (*next == NULL)
 		*next = node;
