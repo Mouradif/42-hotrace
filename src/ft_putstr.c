@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akopera <akopera@student.42.fr>            +#+  +:+       +#+        */
+/*   By: apellicc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 15:13:13 by akopera           #+#    #+#             */
-/*   Updated: 2016/04/23 12:04:50 by mkejji           ###   ########.fr       */
+/*   Created: 2015/12/01 23:34:13 by apellicc          #+#    #+#             */
+/*   Updated: 2015/12/01 23:34:27 by apellicc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "hotrace.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putstr(char const *s)
 {
-	size_t i;
+	int	i;
 
 	i = 0;
 	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
 		i++;
-	return (i);
+	}
 }

@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akopera <akopera@student.42.fr>            +#+  +:+       +#+        */
+/*   By: apellicc <apellicc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 15:13:13 by akopera           #+#    #+#             */
-/*   Updated: 2016/04/23 12:04:50 by mkejji           ###   ########.fr       */
+/*   Created: 2015/12/02 15:55:08 by apellicc          #+#    #+#             */
+/*   Updated: 2015/12/02 16:13:04 by apellicc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "hotrace.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	ft_memset(s, 0, n);
 }

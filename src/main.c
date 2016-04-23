@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/23 00:35:55 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/23 12:21:17 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ int	main(void)
 	char	*s;
 
 	line_nb = 0;
-	get_next_line(1, &key);
-	get_next_line(1, &val);
+	get_next_line(0, &key);
+	get_next_line(0, &val);
 	tree = init_node(key, val);
-	ft_putstr("before loop\n");
-	while ((gnl = get_next_line(1, &s)))
+	while ((gnl = get_next_line(0, &s)))
 	{
-		ft_putstr("loop iteration\n");
 		if (line_nb % 2 == 0)
 			key = ft_strdup(s);
 		else
@@ -43,8 +41,12 @@ int	main(void)
 			free(val);
 			insert_node(node, &tree);
 		}
+		line_nb++;
 	}
-	ft_putstr("loop finished\n");
-	get_next_line(1, &search);
-	puts(search_key(search, tree));
+	while ((gnl = get_next_line(0, &search)))
+	{
+		val = search_key(search, tree);
+		if (val != NULL)
+			puts(val);
+	}
 }

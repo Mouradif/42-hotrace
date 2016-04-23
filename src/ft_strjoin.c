@@ -6,10 +6,11 @@
 /*   By: akopera <akopera@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 15:34:45 by akopera           #+#    #+#             */
-/*   Updated: 2016/04/22 22:42:03 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/23 12:04:39 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "hotrace.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)

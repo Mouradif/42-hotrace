@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akopera <akopera@student.42.fr>            +#+  +:+       +#+        */
+/*   By: apellicc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 15:13:13 by akopera           #+#    #+#             */
-/*   Updated: 2016/04/23 12:04:50 by mkejji           ###   ########.fr       */
+/*   Created: 2015/12/01 23:35:50 by apellicc          #+#    #+#             */
+/*   Updated: 2015/12/01 23:37:42 by apellicc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "hotrace.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char		*ft_strchr(char const *s, int c)
 {
-	size_t i;
+	int		i;
+	char	*s1;
 
 	i = 0;
+	s1 = (char *)s;
 	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			return (s1 + i);
 		i++;
-	return (i);
+	}
+	if (c == '\0')
+		return (s1 + i);
+	return (NULL);
 }
