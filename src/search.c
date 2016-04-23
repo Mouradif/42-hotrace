@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:04:25 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/23 16:57:57 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/23 18:43:44 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,19 @@ void	*not_found(char *k)
 
 char	*search_key(char *key, t_node *root)
 {
-	int		cmp;
+	int		cmp_h;
+	int		cmp_v;
 	t_node	*next;
 
-	cmp = ft_strlen(key) - ft_strlen(root->key);
-	cmp = (cmp == 0) ? ft_strcmprev(key, root->key) : cmp;
-	if (cmp == 0)
+	cmp_h = ft_strlen(key) - ft_strlen(root->key);
+	cmp_h = (cmp_h == 0) ? ft_strcmprev(key, root->key) : cmp_h;
+	if (cmp_h == 0)
 		return (ft_strdup(root->value));
-	next = (cmp < 0) ? root->left : root->right;
+	cmp_v = ft_strcmp(key, root->key);
+	if (cmp_h < 0)
+		next = (cmp_v < 0) ? root->ul : root->dl;
+	else
+		next = (cmp_v < 0) ? root->ur : root->dr;
 	if (next == NULL)
 		return (not_found(key));
 	else

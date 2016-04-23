@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/22 22:36:54 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/23 18:21:03 by mkejji           ###   ########.fr       */
+/*   Created: 2016/04/23 18:28:17 by mkejji            #+#    #+#             */
+/*   Updated: 2016/04/23 18:31:00 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include "libft.h"
 
-typedef struct		s_node {
-	char			*key;
-	char			*value;
-	struct s_node	*ul;
-	struct s_node	*ur;
-	struct s_node	*dl;
-	struct s_node	*dr;
-}					t_node;
-
-char				*search_key(char *key, t_node *root);
-t_node				*init_node(char *key, char *value);
-void				insert_node(t_node *node, t_node **root);
-
-#endif
+void	ft_putendl(char *s)
+{
+	ft_putstr(s);
+	ft_putchar('\n');
+}

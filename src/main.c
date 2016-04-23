@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/23 17:35:07 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/23 18:19:36 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int				main(void)
 	{
 		key_val[1] = search_key(search, tree);
 		if (key_val[1] != NULL)
-			puts(key_val[1]);
+			ft_putendl(key_val[1]);
 	}
 }
