@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 22:41:07 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/23 14:54:06 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/23 16:57:08 by akopera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	insert_node(t_node *node, t_node **root)
 {
 	int		cmp;
 	t_node	**next;
-	
+
 	cmp = ft_strlen(node->key) - ft_strlen((*root)->key);
 	cmp = (cmp == 0) ? ft_strcmprev(node->key, (*root)->key) : cmp;
 	next = (cmp < 0) ? &((*root)->left) : &((*root)->right);

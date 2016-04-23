@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/23 12:21:17 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/23 17:35:07 by akopera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,42 @@
 #include "libft.h"
 #include "hotrace.h"
 
-int	main(void)
+void			make_tree(char **key_val, char **s, t_node **tree)
 {
-	int		line_nb;
-	int		gnl;
-	char	*key;
-	char	*val;
-	char	*search;
-	t_node	*node;
-	t_node	*tree;
-	char	*s;
+	static int	line_nb = 0;
+	t_node		*node;
 
-	line_nb = 0;
-	get_next_line(0, &key);
-	get_next_line(0, &val);
-	tree = init_node(key, val);
-	while ((gnl = get_next_line(0, &s)))
+	if (line_nb % 2 == 0)
+		key_val[0] = ft_strdup(*s);
+	else
 	{
-		if (line_nb % 2 == 0)
-			key = ft_strdup(s);
-		else
-		{
-			val = ft_strdup(s);
-			node = init_node(key, val);
-			free(key);
-			free(val);
-			insert_node(node, &tree);
-		}
-		line_nb++;
+		key_val[1] = ft_strdup(*s);
+		node = init_node(key_val[0], key_val[1]);
+		free(key_val[0]);
+		free(key_val[1]);
+		insert_node(node, tree);
 	}
+	line_nb++;
+}
+
+int				main(void)
+{
+	int			gnl;
+	char		**key_val;
+	char		*search;
+	t_node		*tree;
+	char		*s;
+
+	key_val = (char**)malloc(sizeof(char*) * 2);
+	get_next_line(0, key_val);
+	get_next_line(0, key_val + 1);
+	tree = init_node(key_val[0], key_val[1]);
+	while ((gnl = get_next_line(0, &s)))
+		make_tree(key_val, &s, &tree);
 	while ((gnl = get_next_line(0, &search)))
 	{
-		val = search_key(search, tree);
-		if (val != NULL)
-			puts(val);
+		key_val[1] = search_key(search, tree);
+		if (key_val[1] != NULL)
+			puts(key_val[1]);
 	}
 }

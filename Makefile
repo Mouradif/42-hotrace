@@ -6,13 +6,13 @@
 #    By: akopera <akopera@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/23 15:28:34 by akopera           #+#    #+#              #
-#    Updated: 2016/04/23 15:38:54 by akopera          ###   ########.fr        #
+#    Updated: 2016/04/23 17:36:42 by akopera          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= hotrace
 
-SRC		= src/main.c src/search.c src/get_next_line.c src/get_input.c\
+SRC		= src/main.c src/search.c src/get_next_line.c\
 		src/ft_strsub.c src/ft_strnew.c src/ft_strlen.c src/ft_strjoin.c\
 		src/ft_strdup.c src/ft_strcpy.c src/ft_strcmp.c src/ft_strchr.c\
 		src/ft_putstr.c src/ft_putchar.c src/ft_memset.c src/ft_bzero.c\
