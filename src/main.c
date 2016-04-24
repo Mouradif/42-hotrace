@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 17:55:10 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/24 19:37:02 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	make_tree(char **s, t_node **tree)
 
 void	free_tree(t_node **tree)
 {
+	if (*tree == NULL)
+	   return ;	
 	if ((*tree)->ul != NULL)
 		free_tree(&((*tree)->ul));
 	if ((*tree)->ur != NULL)
