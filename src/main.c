@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 21:47:19 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/24 22:05:44 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ void	build_index(t_node **tree)
 		tmp = s;
 		gnl = get_next_line(0, &s);
 	}
-	free(s);
-	free(tmp);
+	if (s)
+		free(s);
+	if (tmp)
+		free(tmp);
 }
 
 void	search_index(t_node *tree)
