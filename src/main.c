@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 15:41:04 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/24 17:48:23 by akopera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 void			make_tree(char **s, t_node **tree)
 {
-	static int	line_nb = 0;
 	static char	*key;
 	t_node		*node;
 
@@ -24,12 +23,12 @@ void			make_tree(char **s, t_node **tree)
 		key = ft_strdup(*s);
 	else
 	{
-		node = init_node(key, ft_strdup(*s));
+		node = init_node(key, *s);
 		free(key);
 		key = NULL;
 		insert_node(node, tree);
 	}
-	line_nb++;
+	free(*s);
 }
 
 int				main(void)

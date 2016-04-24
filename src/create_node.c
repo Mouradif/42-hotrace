@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 22:41:07 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 16:02:35 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/24 17:47:34 by akopera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_node	*init_node(char *key, char *value)
 {
 	t_node	*node;
 
+	node = NULL;
 	node = (t_node*)malloc(sizeof(t_node));
 	if (node != NULL)
 	{
