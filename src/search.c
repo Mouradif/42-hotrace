@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:04:25 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 17:21:59 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/24 20:28:28 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,19 @@ void	*not_found(char *k)
 
 char	*search_key(char *key, t_node *root)
 {
-	int		cmp_h;
-	int		cmp_v;
-	t_node	*next;
+	int		i;
+	t_node	*tmp;
 
-	cmp_h = ft_strlen(key) - ft_strlen(root->key);
-	cmp_h = (cmp_h == 0) ? ft_strcmprev(key, root->key) : cmp_h;
-	if (cmp_h == 0)
-		return (root->value);
-	cmp_v = hash_key(key) - root->hash;
-	if (cmp_h < 0)
-		next = (cmp_v < 0) ? root->ul : root->dl;
-	else
-		next = (cmp_v < 0) ? root->ur : root->dr;
-	if (next == NULL)
-		return (not_found(key));
-	else
-		return (search_key(key, next));
+	tmp = root;
+	i = 0;
+	while (key[i])
+	{
+		if (tmp->kids[key[i] % 95] == NULL)
+			return (not_found(key));
+		tmp = tmp->kids[key[i] % 95];
+		i++;
+	}
+	if (tmp->isleaf)
+		return (ft_strdup(tmp->v));
+	return (not_found(key));
 }

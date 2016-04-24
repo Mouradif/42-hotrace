@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 19:37:02 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/24 20:40:29 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,31 @@
 void	make_tree(char **s, t_node **tree)
 {
 	static char	*key;
-	t_node		*node;
 
 	if (key == NULL)
 		key = ft_strdup(*s);
 	else
 	{
-		node = init_node(key, *s);
+		insert_node(key, *s, tree);
 		free(key);
 		key = NULL;
-		insert_node(node, tree);
 	}
 	free(*s);
 }
 
 void	free_tree(t_node **tree)
 {
+	int i;
+
+	i = 0;
 	if (*tree == NULL)
-	   return ;	
-	if ((*tree)->ul != NULL)
-		free_tree(&((*tree)->ul));
-	if ((*tree)->ur != NULL)
-		free_tree(&((*tree)->ur));
-	if ((*tree)->dl != NULL)
-		free_tree(&((*tree)->dl));
-	if ((*tree)->dr != NULL)
-		free_tree(&((*tree)->dr));
+		return ;
+	while (i < 95)
+	{
+		if ((*tree)->kids[i] != NULL)
+			free_tree(&((*tree)->kids[i]));
+		i++;
+	}
 	free(*tree);
 }
 
@@ -53,7 +52,7 @@ int		main(void)
 	t_node		*tree;
 	char		*s;
 
-	tree = NULL;
+	tree = init_node();
 	while ((gnl = get_next_line(0, &s)))
 		make_tree(&s, &tree);
 	while ((gnl = get_next_line(0, &search)))
