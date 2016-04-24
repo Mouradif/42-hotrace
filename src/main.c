@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/23 18:19:36 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/24 15:41:04 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 #include "libft.h"
 #include "hotrace.h"
 
-void			make_tree(char **key_val, char **s, t_node **tree)
+void			make_tree(char **s, t_node **tree)
 {
 	static int	line_nb = 0;
+	static char	*key;
 	t_node		*node;
 
-	if (line_nb % 2 == 0)
-		key_val[0] = ft_strdup(*s);
+	if (key == NULL)
+		key = ft_strdup(*s);
 	else
 	{
-		key_val[1] = ft_strdup(*s);
-		node = init_node(key_val[0], key_val[1]);
-		free(key_val[0]);
-		free(key_val[1]);
+		node = init_node(key, ft_strdup(*s));
+		free(key);
+		key = NULL;
 		insert_node(node, tree);
 	}
 	line_nb++;
@@ -35,21 +35,13 @@ void			make_tree(char **key_val, char **s, t_node **tree)
 int				main(void)
 {
 	int			gnl;
-	char		**key_val;
 	char		*search;
 	t_node		*tree;
 	char		*s;
 
-	key_val = (char**)malloc(sizeof(char*) * 2);
-	get_next_line(0, key_val);
-	get_next_line(0, key_val + 1);
-	tree = init_node(key_val[0], key_val[1]);
+	tree = NULL;
 	while ((gnl = get_next_line(0, &s)))
-		make_tree(key_val, &s, &tree);
+		make_tree(&s, &tree);
 	while ((gnl = get_next_line(0, &search)))
-	{
-		key_val[1] = search_key(search, tree);
-		if (key_val[1] != NULL)
-			ft_putendl(key_val[1]);
-	}
+		ft_putendl(search_key(search, tree));
 }
