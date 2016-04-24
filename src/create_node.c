@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 22:41:07 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 15:41:52 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/24 16:02:35 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_node	*init_node(char *key, char *value)
 	{
 		node->key = ft_strdup(key);
 		node->value = ft_strdup(value);
+		node->hash = hash_key(key);
 		node->ul = NULL;
 		node->ur = NULL;
 		node->dl = NULL;
@@ -43,7 +44,7 @@ void	insert_node(t_node *node, t_node **root)
 	{
 		cmp_h = ft_strlen(node->key) - ft_strlen((*root)->key);
 		cmp_h = (cmp_h == 0) ? ft_strcmprev(node->key, (*root)->key) : cmp_h;
-		cmp_v = ft_strcmp(node->key, (*root)->key);
+		cmp_v = node->hash - (*root)->hash;
 		if (cmp_h < 0)
 			next = (cmp_v < 0) ? &((*root)->ul) : &((*root)->dl);
 		else
