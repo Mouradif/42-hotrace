@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 22:05:44 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/24 22:22:24 by akopera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ void	free_tree(t_node **tree)
 	free(*tree);
 }
 
-void	build_index(t_node **tree)
+int		build_index(t_node **tree)
 {
 	char	*s;
 	char	*tmp;
 	int		gnl;
+	int		i;
 
+	i = 0;
 	s = NULL;
 	tmp = s;
 	gnl = get_next_line(0, &s);
@@ -61,11 +63,15 @@ void	build_index(t_node **tree)
 		free(tmp);
 		tmp = s;
 		gnl = get_next_line(0, &s);
+		i++;
 	}
 	if (s)
 		free(s);
+	if (i == 1)
+		return (0);
 	if (tmp)
 		free(tmp);
+	return (1);
 }
 
 void	search_index(t_node *tree)
@@ -94,10 +100,12 @@ void	search_index(t_node *tree)
 int		main(void)
 {
 	t_node		*tree;
+	int			val;
 
 	tree = init_node();
-	build_index(&tree);
-	search_index(tree);
+	val = build_index(&tree);
+	if (val)
+		search_index(tree);
 	free_tree(&tree);
 	return (0);
 }
