@@ -6,7 +6,7 @@
 /*   By: akopera <akopera@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 15:37:24 by akopera           #+#    #+#             */
-/*   Updated: 2015/12/14 19:08:38 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/24 21:10:23 by akopera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	size_t		i;
 
 	i = 0;
-	res = (char*)malloc(sizeof(char) * len + 1);
+	res = (char*)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (res);
 	while (i < len)

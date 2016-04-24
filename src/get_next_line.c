@@ -6,7 +6,7 @@
 /*   By: akopera <akopera@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 16:56:07 by akopera           #+#    #+#             */
-/*   Updated: 2016/04/24 17:11:43 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/24 21:09:11 by akopera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int				get_next_line(int fd, char **line)
 	char		*tmp;
 	int			ret;
 
+	ret = 0;
 	buff = NULL;
 	tmp = NULL;
 	fd > -1 && (read(fd, tmp, 0) >= 0) ? buff = malloc(BUFF_SIZE + 1) : NULL;

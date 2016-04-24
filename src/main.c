@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 20:40:29 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/24 21:47:19 by akopera          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	make_tree(char **s, t_node **tree)
 		free(key);
 		key = NULL;
 	}
-	free(*s);
 }
 
 void	free_tree(t_node **tree)
@@ -42,21 +41,61 @@ void	free_tree(t_node **tree)
 			free_tree(&((*tree)->kids[i]));
 		i++;
 	}
+	if ((*tree)->isleaf)
+		free((*tree)->v);
 	free(*tree);
+}
+
+void	build_index(t_node **tree)
+{
+	char	*s;
+	char	*tmp;
+	int		gnl;
+
+	s = NULL;
+	tmp = s;
+	gnl = get_next_line(0, &s);
+	while (gnl)
+	{
+		make_tree(&s, tree);
+		free(tmp);
+		tmp = s;
+		gnl = get_next_line(0, &s);
+	}
+	free(s);
+	free(tmp);
+}
+
+void	search_index(t_node *tree)
+{
+	char	*search;
+	char	*tmp;
+	char	*s;
+	int		gnl;
+
+	s = NULL;
+	search = NULL;
+	tmp = search;
+	gnl = get_next_line(0, &search);
+	while (gnl)
+	{
+		s = search_key(search, tree);
+		ft_putendl(s);
+		free(s);
+		free(tmp);
+		tmp = search;
+		gnl = get_next_line(0, &search);
+	}
+	free(tmp);
 }
 
 int		main(void)
 {
-	int			gnl;
-	char		*search;
 	t_node		*tree;
-	char		*s;
 
 	tree = init_node();
-	while ((gnl = get_next_line(0, &s)))
-		make_tree(&s, &tree);
-	while ((gnl = get_next_line(0, &search)))
-		ft_putendl(search_key(search, tree));
+	build_index(&tree);
+	search_index(tree);
 	free_tree(&tree);
 	return (0);
 }
