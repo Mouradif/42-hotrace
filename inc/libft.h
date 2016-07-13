@@ -6,7 +6,7 @@
 /*   By: apellicc <apellicc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 16:36:33 by apellicc          #+#    #+#             */
-/*   Updated: 2016/04/23 18:27:58 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/04/24 23:15:20 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	ft_putstr(char const *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_putendl(char *str);
 void	ft_putchar(char c);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif

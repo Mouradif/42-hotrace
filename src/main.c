@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:10:46 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 22:22:24 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/24 23:02:53 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	search_index(t_node *tree)
 	while (gnl)
 	{
 		s = search_key(search, tree);
-		ft_putendl(s);
+		put_next_line(s, 0);
 		free(s);
 		free(tmp);
 		tmp = search;
@@ -106,6 +106,7 @@ int		main(void)
 	val = build_index(&tree);
 	if (val)
 		search_index(tree);
+	put_next_line(NULL, 1);
 	free_tree(&tree);
 	return (0);
 }

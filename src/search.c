@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 23:04:25 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 21:26:59 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/24 23:32:41 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*not_found(char *k)
 	char	*str;
 
 	str = ft_strdup(k);
+	if (str == NULL)
+		return (NULL);
 	str = ft_strjoin(str, ": Not found.");
 	return (str);
 }

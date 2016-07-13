@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/22 22:41:07 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 21:27:16 by akopera          ###   ########.fr       */
+/*   Updated: 2016/04/24 22:49:13 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void	insert_node(char *key, char *value, t_node **root)
 		*root = init_node();
 	if (*key == '\0')
 	{
-		(*root)->isleaf = 1;
+		if ((*root)->isleaf)
+			free((*root)->v);
+		else
+			(*root)->isleaf = 1;
 		(*root)->v = ft_strdup(value);
 	}
 	else

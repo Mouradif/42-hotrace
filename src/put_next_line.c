@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hotrace.h                                          :+:      :+:    :+:   */
+/*   put_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/22 22:36:54 by mkejji            #+#    #+#             */
-/*   Updated: 2016/04/24 23:04:05 by mkejji           ###   ########.fr       */
+/*   Created: 2016/04/24 22:46:30 by mkejji            #+#    #+#             */
+/*   Updated: 2016/04/24 23:36:41 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOTRACE_H
-# define HOTRACE_H
+#include "hotrace.h"
+#include "libft.h"
+#include <unistd.h>
 
-typedef struct		s_node
+void	put_next_line(char *line, int last)
 {
-	char			isleaf;
-	char			*v;
-	struct s_node	*kids[95];
-}					t_node;
+	static char stock[100000] = "";
+	static int	len = 0;
+	int			slen;
 
-char				*search_key(char *key, t_node *root);
-t_node				*init_node();
-void				insert_node(char *key, char *value, t_node **root);
-unsigned int		hash_key(char *key);
-void				put_next_line(char *line, int last);
-
-#endif
+	if (last)
+	{
+		write(1, stock, len);
+		return ;
+	}
+	slen = ft_strlen(line);
+	if (len + slen + 1>= 100000)
+	{
+		write(1, stock, len);
+		len = 0;
+	}
+	ft_memcpy(stock + len, line, slen);
+	stock[len + slen] = '\n';
+	len += slen + 1;
+}
